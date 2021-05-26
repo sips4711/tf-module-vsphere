@@ -1,4 +1,5 @@
 variable "name" {}
+variable "public_key" {}
 variable "cpu" {}
 variable "memory" {}
 variable "disk" {}
