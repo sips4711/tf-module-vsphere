@@ -9,6 +9,8 @@ variable "vcenter" {}
 variable "vsphere_user" {}
 variable "vsphere_password" {}
 
+
+variable "vsphere_folder" {}
 variable "vsphere_datacenter" {}
 variable "vsphere_datastore" {}
 variable "vsphere_cluster" {}
