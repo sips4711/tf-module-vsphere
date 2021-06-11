@@ -19,11 +19,14 @@ variable "vsphere_resource_pool" {}
 
 
 
+terraform {
+  required_providers {
+    vsphere = {
+      version = "3.0.0"
+    }
+  }
 
-
-module "vm" {
-  source  = "Terraform-VMWare-Modules/vm/vsphere"
-  version = "3.0.0"
+  
 }
 
 
