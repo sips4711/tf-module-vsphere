@@ -17,6 +17,16 @@ variable "vsphere_cluster" {}
 variable "vsphere_network" {}
 variable "vsphere_resource_pool" {}
 
+
+
+
+
+module "vm" {
+  source  = "Terraform-VMWare-Modules/vm/vsphere"
+  version = "3.0.0"
+}
+
+
 provider "vsphere" {
   user           = "${var.vsphere_user}"
   password       = "${var.vsphere_password}"
