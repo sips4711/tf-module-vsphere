@@ -117,7 +117,7 @@ resource "vsphere_virtual_machine" "vm" {
 
   extra_config = {
     "guestinfo.userdata.encoding" = "gzip+base64"
-    "guestinfo.userdata" = "${data.template_cloudinit_config.config.rendered}"
+    "guestinfo.userdata" = "${data.templateBOERNER!_cloudinit_config.config.rendered}"
   }
 
   clone {
