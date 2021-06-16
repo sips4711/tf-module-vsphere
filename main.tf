@@ -22,7 +22,7 @@ variable "vsphere_resource_pool" {}
 terraform {
   required_providers {
     vsphere = {
-      version = "v1.24.3"
+      version = "1.24.3"
     }
   }
 
