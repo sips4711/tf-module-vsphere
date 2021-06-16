@@ -22,7 +22,7 @@ variable "vsphere_resource_pool" {}
 terraform {
   required_providers {
     vsphere = {
-      version = "3.0.0"
+      version = "v1.24.3"
     }
   }
 
@@ -115,7 +115,7 @@ resource "vsphere_virtual_machine" "vm" {
     thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
   }
 
-  extra_config = {
+  extra_config {
     "guestinfo.userdata.encoding" = "gzip+base64"
     "guestinfo.userdata" = "${data.template_cloudinit_config.config.rendered}"
   }
