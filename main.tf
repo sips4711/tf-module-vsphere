@@ -84,7 +84,7 @@ data "template_cloudinit_config" "config" {
   base64_encode = true
 
   # Main cloud-config configuration file.
-  part = {
+  part {
     content_type = "text/cloud-config"
     content      = "${data.template_file.script.rendered}"
   }
