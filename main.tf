@@ -72,7 +72,7 @@ data "vsphere_virtual_machine" "template" {
 data "template_file" "script" {
   template = "${file("cloud-config.tpl")}"
 
-  vars {
+  vars = {
     public_key = "${var.public_key}"
   }
 }
@@ -84,7 +84,7 @@ data "template_cloudinit_config" "config" {
   base64_encode = true
 
   # Main cloud-config configuration file.
-  part {
+  part = {
     content_type = "text/cloud-config"
     content      = "${data.template_file.script.rendered}"
   }
