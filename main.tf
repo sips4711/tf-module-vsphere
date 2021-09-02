@@ -63,7 +63,7 @@ data "vsphere_network" "network" {
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
-data "vsphere_network_internal" "network" {
+data "vsphere_network" "network_internal" {
   name          = "${var.vsphere_network_internal}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
@@ -117,7 +117,7 @@ resource "vsphere_virtual_machine" "vm" {
   }
   
   network_interface {
-    network_id = "${data.vsphere_network_internal.network.id}"
+    network_id = "${data.vsphere_network.network_internal.id}"
     adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
   }
 
