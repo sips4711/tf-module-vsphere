@@ -63,6 +63,11 @@ data "vsphere_network" "network" {
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
+data "vsphere_network_internal" "network" {
+  name          = "${var.vsphere_network_internal}"
+  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+}
+
 data "vsphere_virtual_machine" "template" {
   name          = "${var.image}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
@@ -99,12 +104,20 @@ resource "vsphere_virtual_machine" "vm" {
 
   num_cpus = "${var.cpu}"
   memory   = "${var.memory}"
+  memory_hot_add_enabled = true
+  cpu_hot_add_enabled = true
+  nested_hv_enabled = true 
   guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
 
   scsi_type = "${data.vsphere_virtual_machine.template.scsi_type}"
 
   network_interface {
     network_id = "${data.vsphere_network.network.id}"
+    adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
+  }
+  
+  network_interface {
+    network_id = "${data.vsphere_network_internal.network.id}"
     adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
   }
 
