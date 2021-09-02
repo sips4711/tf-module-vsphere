@@ -116,10 +116,7 @@ resource "vsphere_virtual_machine" "vm" {
     adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
   }
   
-  network_interface {
-    network_id = "${data.vsphere_network.network_internal.id}"
-    adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
-  }
+
 
   disk {
     label = "disk0"
