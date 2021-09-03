@@ -15,6 +15,7 @@ variable "vsphere_datacenter" {}
 variable "vsphere_datastore" {}
 variable "vsphere_cluster" {}
 variable "vsphere_network" {}
+variable "vsphere_network_internal" {}
 variable "vsphere_resource_pool" {}
 
 
